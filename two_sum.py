@@ -14,12 +14,24 @@ def two_sum(nums: list[int], target: int) -> list[int]:
     Space complexity: O(n) for the dictionary used to store numbers and indices.
     """
 
-    num_map = {}  # Use a dictionary for efficient lookups
+    num_map = {}
 
     for i, num in enumerate(nums):
+        print("Current value of num:", num)
         complement = target - num
-        if complement in num_map:
-            return [num_map[complement], i]  # Return indices of the pair
-        num_map[num] = i  # Store current number and its index
+        print("Complement:", complement)
 
-    return None  # No matching pair found
+        if complement in num_map:
+            print("Found pair:", [num_map[complement], i])
+            return [num_map[complement], i]
+
+        num_map[num] = i
+
+    return None
+
+# Test case
+nums = [2, 7, 11, 15]
+target = 9
+
+result = two_sum(nums, target)
+print("Final result:", result)
